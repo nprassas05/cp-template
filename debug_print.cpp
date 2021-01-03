@@ -1,4 +1,10 @@
 template<typename T>
+ostream& operator <<(ostream &os, const pair<T, T> &p) {
+    os << "<" << p.first << ", " << p.second << ">";
+    return os;
+}
+
+template<typename T>
 ostream& operator <<(ostream &os, const vector<T> &v) {
     int len = v.size();
     os << "{";
@@ -9,11 +15,5 @@ ostream& operator <<(ostream &os, const vector<T> &v) {
         os << v[i];
     }
     os << "}";
-    return os;
-}
-
-template<typename T>
-ostream& operator <<(ostream &os, const pair<T, T> &p) {
-    os << "<" << p.first << ", " << p.second << ">";
     return os;
 }
