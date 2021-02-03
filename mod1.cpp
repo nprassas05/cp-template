@@ -51,7 +51,7 @@ T fact(T x) {
 }
 
 template<typename T>
-T nChooseR(T n, T r) {
+T n_choose_r(T n, T r) {
     assert(n >= r);
     T res = mod_mul(fact(n), mod_mul(mod_inv(fact(r)), mod_inv(fact(n - r))));
     return res;
