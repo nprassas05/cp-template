@@ -40,6 +40,23 @@ T mod_mul(T a, T b, T mod = mod_defaults::mod) {
     return (1LL * a * b) % mod;
 }
 
+template<typename T>
+T fact(T x) {
+    T res = 1;
+    while (x > 1) {
+        res = mod_mul(res, x);
+        --x;
+    }
+    return res;
+}
+
+template<typename T>
+T nChooseR(T n, T r) {
+    assert(n >= r);
+    T res = mod_mul(fact(n), mod_mul(mod_inv(fact(r)), mod_inv(fact(n - r))));
+    return res;
+}
+
 int main() {
     cout << bin_pow(3, 5) << endl;
     cout << mod_inv(358) << endl;
