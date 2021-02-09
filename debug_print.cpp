@@ -35,3 +35,9 @@ ostream& operator <<(ostream &os, const stack<T> &st) {
     cout << " bottom";
     return os;
 }
+
+#ifdef LOCAL
+#define debug(...) cout << "[" << #__VA_ARGS__ << "]:" << (__VA_ARGS__) << '\n'
+#else
+#define debug(...)
+#endif
