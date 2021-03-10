@@ -36,8 +36,10 @@ ostream& operator <<(ostream &os, const stack<T> &st) {
     return os;
 }
 
+void debug_out() { cerr << endl; }
+template<typename Head, typename... Tail> void debug_out(Head H, Tail... T) { cerr << ' ' << H; debug_out(T...); }
 #ifdef LOCAL
-#define debug(...) cout << "[" << #__VA_ARGS__ << "]:" << (__VA_ARGS__) << '\n'
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
 #define debug(...)
 #endif
