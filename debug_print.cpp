@@ -36,6 +36,7 @@ ostream& operator <<(ostream &os, const stack<T> &st) {
     return os;
 }
 
+// copied from codeforces user neal
 void debug_out() { cerr << endl; }
 template<typename Head, typename... Tail> void debug_out(Head H, Tail... T) { cerr << ' ' << H; debug_out(T...); }
 #ifdef LOCAL
