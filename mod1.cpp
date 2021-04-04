@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 namespace mod_defaults {
     const int mod = (int) 1e9 + 7;
 }
@@ -55,12 +52,4 @@ T n_choose_r(T n, T r) {
     assert(n >= r);
     T res = mod_mul(fact(n), mod_mul(mod_inv(fact(r)), mod_inv(fact(n - r))));
     return res;
-}
-
-int main() {
-    cout << bin_pow(3, 5) << endl;
-    cout << mod_inv(358) << endl;
-    cout << "805 times " << mod_inv(805) << " (mod) = " << mod_mul(805, mod_inv(805)) << endl;
-    cout << mod_subtract(4, 5, 7) << endl;
-    return 0;
 }
