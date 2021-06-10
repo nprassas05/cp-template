@@ -1,44 +1,36 @@
-#include <bits/stdc++.h>
-using namespace std;
+vector<int> primes;
+vector<bool> is_prime;
+// generate all primes <= max_val
+void sieve(int max_val) {
+    primes.reserve(max_val <= 10000 ? 1229 : max_val <= 100000 ? 9592 : 78498);
+    is_prime.assign(max_val + 1, true);
+    is_prime[0] = is_prime[1] = false;
 
-void sieve_old(const int n) 
-{
-    set<int> primes;
-    const int max_n = 30303;
-    bool prime[max_n]; 
-    memset(prime, true, sizeof(prime)); 
-  
-    for (int p=2; p*p<=n; p++) 
-    { 
-        // If prime[p] is not changed, then it is a prime 
-        if (prime[p] == true) 
-        {
-			primes.insert(p);
-            for (int i=p*p; i<=n; i += p) 
-                prime[i] = false; 
+    for (int p = 2; p <= max_val; ++p) {
+        if (is_prime[p]) {
+            primes.push_back(p);
+            for (long long m = 1LL * p * p; m <= max_val; m += p) {
+                is_prime[m] = false;
+            }
         }
     }
-    
-    //~ for (int p=2; p<=n; p++) 
-       //~ if (prime[p]) 
-          //~ cout << p << endl;
 }
+constexpr auto genprimes = sieve;
 
-const int N = 30303;
-void sieve() {
-    vector<int> primes;
-    primes.reserve(N);
-    vector<bool> isPrime(N);
-    for (int i = 2; i < N; i++)
-            isPrime[i] = 1;
-    for (int x = 2; x < N; x++) {
-        if (!isPrime[x]) continue;
-        primes.push_back(x);
-        for (int y = 2 * x; y < N; y += x)
-            isPrime[y] = 0;
+// https://cp-algorithms.com/algebra/factorization.html#toc-tgt-2
+// For a given prime p occuring k times in the prime factoriztion of n, the resulting
+// vector will similarly contain k instances of p.
+vector<long long> prime_factorize(long long n) {
+    vector<long long> factorization;
+    for (long long d : primes) {
+        if (d * d > n)
+            break;
+        while (n % d == 0) {
+            factorization.push_back(d);
+            n /= d;
+        }
     }
-}
-
-int main() {
-    return 0;
+    if (n > 1)
+        factorization.push_back(n);
+    return factorization;
 }
