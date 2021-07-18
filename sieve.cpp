@@ -14,7 +14,7 @@ void sieve(int max_val) {
             }
         }
     }
-
+}
 constexpr auto genprimes = sieve;
 
 // https://cp-algorithms.com/algebra/factorization.html#toc-tgt-2
