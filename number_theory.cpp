@@ -34,3 +34,16 @@ vector<long long> prime_factorize(long long n) {
         factorization.push_back(n);
     return factorization;
 }
+
+// extended euclidean algorithm
+// find (x, y) such that ax + by = 1
+// this version assumes that gcd(a, b) = 1
+pair<int, int> ext_euclid(int a, int b) {
+    #ifdef LOCAL
+        assert(std::gcd(a, b) == 1);
+    #endif
+    if (b == 0) return {1, 0};
+    int q = a / b;
+    auto [xx, yy] = ext_euclid(b, a % b);
+    return {yy, xx - q * yy};
+}
