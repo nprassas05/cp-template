@@ -9,7 +9,11 @@ string to_string(tuple<A, B, C> p);
  
 template <typename A, typename B, typename C, typename D>
 string to_string(tuple<A, B, C, D> p);
- 
+
+string to_string(char c) {
+    return string("'") + c + "'";
+} 
+
 string to_string(const string& s) {
   return '"' + s + '"';
 }
