@@ -70,7 +70,7 @@ struct mint {
     friend bool operator>=(const mint &lhs, const mint &rhs) { return lhs.val >= rhs.val; }
 
     mint inv() {
-        return this.pow(Mod - 2);
+        return this->pow(Mod - 2);
     }
 
     mint pow(int64_t p) const {
@@ -80,7 +80,7 @@ struct mint {
         mint a = *this;
         mint res = 1;
         while (p) {
-            if (p & 1 == 0) {
+            if ((p & 1) == 0) {
                 a *= a;
                 p /= 2;
             } else {
